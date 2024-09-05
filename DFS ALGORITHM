@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+void DFS(int adj[][3], int start, int visited[]) {
+    visited[start] = 1;
+    printf("%d ", start);
+    for (int i = 0; i < 3; i++) {
+        if (adj[start][i] && !visited[adj[start][i]]) {
+            DFS(adj, adj[start][i], visited);
+        }
+    }
+}
+
+int main() {
+    int adj[4][3] = {{1, 2, 0}, {0, 2, 0}, {0, 1, 3}, {2, 0, 0}};
+    int visited[4] = {0};
+    DFS(adj, 2, visited);
+    return 0;
+}
